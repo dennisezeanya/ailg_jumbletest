@@ -1,0 +1,12 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: onyekabaekene/test
+  tag: latest
+
+NODE_ENV: production
+DATABASE_URL: mongodb+srv://glia:glia1234@ailgdb.q9ohgvp.mongodb.net/test
+API_KEY: testing
+
+Port: 8000
+
+# DATABASE_URL and API_KEY should be kept secret 

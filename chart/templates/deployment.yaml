@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Release.Name }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          ports:
+            - containerPort: 8000
+          env: 
+            - name: NODE_ENV
+              value: "{{ .Values.NODE_ENV }}"
+            - name: DATABASE_URL
+              value: "{{ .Values.DATABASE_URL }}"
+            - name: API_KEY
+              value: "{{ .Values.API_KEY }}"
